@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: install dependencies
-      - uses: actions/setup-node@v4
+        uses: actions/setup-node@v4
       - run: npm i
   run-tests:
     runs-on: ubuntu-latest
