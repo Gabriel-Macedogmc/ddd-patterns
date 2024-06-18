@@ -4,13 +4,13 @@ import { Customer } from "./customer";
 describe("Customer unit Tests", () => {
   it("should trhow error when id is empty", () => {
     expect(() => {
-      let customer = new Customer("", "John Doe");
+      new Customer("", "John Doe");
     }).toThrow("ID is required");
   });
 
   it("should trhow error when Name is empty", () => {
     expect(() => {
-      let customer = new Customer("123", "");
+      new Customer("123", "");
     }).toThrow("Name is required");
   });
 
@@ -48,5 +48,16 @@ describe("Customer unit Tests", () => {
       const customer = new Customer("1", "John Doe");
       customer.activate();
     }).toThrow("Address is mandatory to activate a customer");
+  });
+
+  it("should add reward points", () => {
+    const customer = new Customer("1", "John Doe");
+    expect(customer.rewardPoints).toBe(0);
+
+    customer.addRewardPoints(10);
+    expect(customer.rewardPoints).toBe(10);
+
+    customer.addRewardPoints(10);
+    expect(customer.rewardPoints).toBe(20);
   });
 });
