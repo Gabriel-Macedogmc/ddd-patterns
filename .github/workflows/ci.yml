@@ -1,0 +1,16 @@
+name: ci-ddd-paterns
+on: [push]
+jobs:
+  install-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install dependencies
+      - uses: actions/setup-node@v4
+      - run: npm i
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+      - name: Run Tests units
+      - run: npm test
