@@ -104,6 +104,7 @@ describe("Order Repository unit test", () => {
     const orderRepository = new OrderRepository();
     await orderRepository.create(order);
 
+    order.items[0].changePrice(10);
     await orderRepository.update(order);
 
     const orderModel = await OrderModel.findOne({
@@ -119,7 +120,7 @@ describe("Order Repository unit test", () => {
         {
           id: orderItem.id,
           name: orderItem.name,
-          price: orderItem.price,
+          price: 10,
           quantity: orderItem.quantity,
           product_id: orderItem.productId,
           order_id: order.id,
